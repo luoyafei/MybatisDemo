@@ -3,6 +3,17 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper>
-	
+<mapper namespace="com.mybatis.bean.User">
+	<select id="allList" resultType="com.mybatis.bean.User">
+		select * from user
+	</select>
+	<select id="getOne" resultType="com.mybatis.bean.User" parameterType="string">
+		select * from user u where u.userId = #{userId}
+	</select>
+	<insert id="insertUser" parameterType="com.mybatis.bean.User">
+		insert into user(userId, userName, age, salary) values(null, #{userName}, #{age}, #{salary})
+	</insert>
+	<update id="updateUser" parameterType="com.mybatis.bean.User">
+		update user set user.userName = #{userName}, user.age = #{age}, user.salary = #{salary}
+	</update>
 </mapper>
