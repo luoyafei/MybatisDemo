@@ -75,6 +75,43 @@ public class TestMybatis {
 		session.commit();
 		
 		System.out.println(i);
+	}
+	
+	@Test
+	public void testDelete() {
+		
+		String resource = "mybatisConfig.xml";
+		InputStream is = null;
+		try {
+			is = Resources.getResourceAsStream(resource);
+		} catch(IOException e) {}
+		
+		SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(is);
+		
+		SqlSession session = ssf.openSession();
+		
+		int i = session.delete("com.mybatis.bean.User.deleteUser", 6);
+		session.commit();
+		
+		System.out.println(i);
+		
+	}
+	
+	public static void main(String[] args) {
+		String resource = "mybatisConfig.xml";
+		InputStream is = null;
+		try {
+			is = Resources.getResourceAsStream(resource);
+		} catch(IOException e) {}
+		
+		SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(is);
+		
+		SqlSession session = ssf.openSession();
+		
+		int i = session.delete("com.mybatis.bean.User.deleteUser", 6);
+		//session.commit();
+		
+		System.out.println(i);
 		
 	}
 }

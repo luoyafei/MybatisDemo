@@ -14,6 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into user(userId, userName, age, salary) values(null, #{userName}, #{age}, #{salary})
 	</insert>
 	<update id="updateUser" parameterType="com.mybatis.bean.User">
-		update user set user.userName = #{userName}, user.age = #{age}, user.salary = #{salary}
+		update user set user.userName = #{userName}, user.age = #{age}, user.salary = #{salary} where user.userId = #{userId}
 	</update>
+	<delete id="deleteUser" parameterType="_int">
+		delete from user where userId = #{userId}
+	</delete>
 </mapper>
